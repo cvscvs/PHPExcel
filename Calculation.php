@@ -3004,10 +3004,12 @@ class PHPExcel_Calculation {
 				//	Log what we're doing
 				$operand1 = $operand1Data['value'];
 				$operand2 = $operand2Data['value'];
-				if ($token == ':') {
-					$this->_writeDebug('Evaluating Range '.$this->_showValue($operand1Data['reference']).$token.$this->_showValue($operand2Data['reference']));
-				} else {
-					$this->_writeDebug('Evaluating '.$this->_showValue($operand1).' '.$token.' '.$this->_showValue($operand2));
+				if ($this->writeDebugLog) {
+					if ($token == ':') {
+						$this->_writeDebug('Evaluating Range '.$this->_showValue($operand1Data['reference']).$token.$this->_showValue($operand2Data['reference']));
+					} else {
+						$this->_writeDebug('Evaluating '.$this->_showValue($operand1).' '.$token.' '.$this->_showValue($operand2));
+					}
 				}
 				//	Process the operation in the appropriate manner
 				switch ($token) {
