@@ -3402,7 +3402,9 @@ class PHPExcel_Calculation {
 			$result = array();
 			if ((is_array($operand1)) && (!is_array($operand2))) {
 				foreach($operand1 as $x => $operandData) {
-					$this->_writeDebug('Evaluating '.$this->_showValue($operandData).' '.$operation.' '.$this->_showValue($operand2));
+					if ($this->writeDebugLog) {
+						$this->_writeDebug('Evaluating '.$this->_showValue($operandData).' '.$operation.' '.$this->_showValue($operand2));
+					}
 					$this->_executeBinaryComparisonOperation($cellID,$operandData,$operand2,$operation,$stack);
 					$r = $stack->pop();
 					$result[$x] = $r['value'];
